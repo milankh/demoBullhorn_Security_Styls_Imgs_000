@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:fragment ="headstuff">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Bullhorn Community</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <style>
+        body   {
+            padding-bottom: 70px;
+        }
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-default" th:fragment="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toogle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+
+            </button>
+            <a href="/" class="navbar-brand">Bullhorn Community</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/add">Post</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </div> <!--Navbar Collapse -->
+    </div> <!--Container Fluids -->
+</nav>
+
+
+<div class="container">
+    <div class="jumbotron">
+        <button class="btn btn-primary btn-lg"><a href="/add" style="color: white; text-decoration: none;"> Post Message </a></button> <br />
+        <br />
+
+
+        <div class="well" th:each="user :${users}" >
+
+            <h3 th:text="${user.content}"></h3>
+            <div th:if="${user.headshot} != null">
+                <img class="img-thumbnail" width="350" height="300" th:src="${user.headshot}" /> <hr />
+            </div>
+            <p style="display: inline-block; color: darkslategray; font-size: 14px" th:text="${user.sentBy}"></p> -
+            <p style="display: inline-block; color: darkslategray; font-size: 14px" th:text="${user.postedDate}"></p>
+
+
+            <button class="btn btn-warning btn-xs"><a style="color: white; text-decoration: none;" th:href="@{updatemessage/{id} (id=${user.id})}"> Update</a></button>
+            <button class="btn btn-success btn-xs"><a style="color: white; text-decoration: none;" th:href="@{messagedetails/{id} (id=${user.id})}"> View </a></button>
+            <button class="btn btn-danger btn-xs"><a style="color: white; text-decoration: none;" th:href="@{deletemessage/{id} (id=${user.id})}"> Delete</a></button>
+
+        </div>
+
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom" th:fragment="footer">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li ><a href="#"> copyright 2017 Bullhorn Community</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<th:block th:fragment="jslinks">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+</th:block>
+</body>
+</html>

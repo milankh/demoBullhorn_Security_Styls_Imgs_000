@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <head th:replace="basepage :: headstuff"></head>
+
+</head>
+<body>
+<nav th:replace="basepage :: navbar"></nav>
+<div class="container">
+    <div class="jumbotron">
+        <button class="btn btn-primary"><a href="/" style="color: white; text-decoration: none;">Show all Messages</a></button>
+        <br /> <br />
+        <span style="font-size: large">Message: </span><span style="font-size: large" th:text="${user.content}"></span><br />
+        <div th:if="${user.headshot} != null">
+        <img class="img-rounded" width="350" height="350" th:src="${user.headshot}" /> <hr />
+        </div>
+        Posted Date: <span th:text="${user.postedDate}"></span><br />
+        Posted By: <span th:text="${user.sentBy}"></span><br /> <br />
+
+        <button class="btn btn-danger "><a th:href="@{/deletemessage/{id} (id=${user.id})}" style="color: white; text-decoration: none;">Delete it</a> </button>
+    </div>
+</div>
+
+<nav th:replace="basepage :: footer"></nav>
+<th:block th:replace="basepage :: jslinks"></th:block>
+</body>
+</html>
