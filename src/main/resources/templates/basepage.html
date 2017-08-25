@@ -10,6 +10,13 @@
         body   {
             padding-bottom: 70px;
         }
+
+         .center {
+             margin: auto;
+             width: 50%;
+             padding: 5px;
+         }
+
     </style>
 </head>
 <body>
@@ -57,9 +64,9 @@
             <p style="display: inline-block; color: darkslategray; font-size: 14px" th:text="${user.postedDate}"></p>
 
 
-            <button class="btn btn-warning btn-xs"><a style="color: white; text-decoration: none;" th:href="@{updatemessage/{id} (id=${user.id})}"> Update</a></button>
+            <!--<button class="btn btn-warning btn-xs"><a style="color: white; text-decoration: none;" th:href="@{updatemessage/{id} (id=${user.id})}"> Update</a></button> -->
             <button class="btn btn-success btn-xs"><a style="color: white; text-decoration: none;" th:href="@{messagedetails/{id} (id=${user.id})}"> View </a></button>
-            <button class="btn btn-danger btn-xs"><a style="color: white; text-decoration: none;" th:href="@{deletemessage/{id} (id=${user.id})}"> Delete</a></button>
+            <!-- <button class="btn btn-danger btn-xs"><a style="color: white; text-decoration: none;" th:href="@{deletemessage/{id} (id=${user.id})}"> Delete</a></button> -->
 
         </div>
 
@@ -69,9 +76,11 @@
 
 <nav class="navbar navbar-default navbar-fixed-bottom" th:fragment="footer">
     <div class="container">
+        <div class="center">
         <ul class="nav navbar-nav">
             <li ><a href="#"> copyright 2017 Bullhorn Community</a></li>
         </ul>
+        </div>
     </div>
 </nav>
 
