@@ -4,10 +4,23 @@
     <head th:replace="basepage :: headstuff"></head>
 
 </head>
+
+<style>
+    #outPopUp {
+        position: absolute;
+        width: 300px;
+        height: 200px;
+        z-index: 15;
+        top: 40%;
+        left: 50%;
+        margin: -100px 0 0 -150px;
+    }
+</style>
 <body>
 
 <nav th:replace="basepage :: navbar"></nav>
-<div class="container ">
+<div class="container " id="outPopUp">
+    <div class="jumbotron">
     <form  action="#" th:action="@{/post}" th:object="${user}" method="post" enctype="multipart/form-data">
 
 
@@ -30,7 +43,7 @@
 
         <div class="form-group">
             <label for="message">Message:</label><br />
-            <textarea th:field="*{content}" name="content" id="message" cols="40" rows="3"></textarea>
+            <textarea th:field="*{content}" name="content" id="message" cols="20" rows="4"></textarea>
             <span th:if="${#fields.hasErrors('content')}"
                   th:errors="*{content}"></span> <br />
         </div>
@@ -38,6 +51,7 @@
         <input type="file" name="file" /> <br />
         <button class="btn btn-success " type="submit">POST</button>
     </form>
+</div>
 </div>
 <nav th:replace="basepage :: footer"></nav>
 <th:block th:replace="basepage :: jslinks"></th:block>
